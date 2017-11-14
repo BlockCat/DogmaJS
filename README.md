@@ -1,4 +1,14 @@
-#TODO:
+
+
+# Build:
+## Requirements
+- Phobos
+- yarn (via npm)
+
+## Building
+Make sure all dependencies are install by running ```yarn install```, get data from Phobos and copy the output to the ```src/cache``` folder. Run ```yarn run build``` in the command line, this will create a vendor.js and app.js in the dist/ folder.
+
+# TODO:
 - Write tests
 - Add character environment
 - Add drones
@@ -8,9 +18,3 @@
 - Stacking penalties
 - T3 Destroyers
 - T3 Cruisers
-
-#Install:
-To install, run ```yarn install```
-
-#Build:
-To build, run ```yarn run build``` in the command line, this will create a vendor.js and app.js in the dist/ folder.
