@@ -31,6 +31,7 @@ export default class CacheHandler {
         this.loadExpressions();
         this.loadAttributes();
         this.loadEffects();
+        this.loadTypeGroups();
 
         console.log('Binding data');
         this.bindTypeAttribute();
@@ -82,8 +83,8 @@ export default class CacheHandler {
 
     private loadTypeGroups() {
         this.typeDictionary = {};
-        for (const json of <any>typesJson) {
-            this.typeDictionary[json.typeID] = json.groupID;
+        for (const json of Object.keys(typesJson)) {
+            this.typeDictionary[json] = typesJson[json].groupID;
         }
     }
 

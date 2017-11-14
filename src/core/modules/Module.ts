@@ -1,11 +1,12 @@
-import {ModuleLocation, ModuleState} from "./ModuleState";
-import DogmaItem from "./DogmaType";
+import {ModuleLocation, ModuleState} from './ModuleState';
+import DogmaType from './DogmaType';
+import Charge from './Charge';
 
-export default class Module extends DogmaItem {
+export default class Module extends DogmaType {
     moduleLocation: ModuleLocation;
     moduleState: ModuleState;
 
-    constructor(moduleId, moduleLocation, moduleState, charge = null) {
+    constructor(moduleId: number, moduleLocation: ModuleLocation, moduleState: ModuleState, charge: Charge = null) {
         super(moduleId);
         this.moduleLocation = moduleLocation;
         this.moduleState = moduleState;

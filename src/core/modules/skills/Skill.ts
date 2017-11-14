@@ -1,4 +1,4 @@
-import DogmaType from "../DogmaType";
+import DogmaType from '../DogmaType';
 
 export default class Skill extends DogmaType {
 
@@ -7,6 +7,11 @@ export default class Skill extends DogmaType {
     constructor(skillId, skillLevel) {
         super(skillId);
         this.skillLevel = skillLevel;
-        this.environment.setAttributeValue('skillLevel', skillLevel);
+        this.resetEnvironment();
+    }
+
+    resetEnvironment() {
+        super.resetEnvironment();
+        this.environment.setAttributeValue('skillLevel', this.skillLevel);
     }
 }

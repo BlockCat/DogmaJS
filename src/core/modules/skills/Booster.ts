@@ -1,4 +1,4 @@
-import DogmaType from "../DogmaType";
+import DogmaType from '../DogmaType';
 
 export default class Booster extends DogmaType {
 

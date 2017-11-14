@@ -9,8 +9,8 @@ import {FitResult} from './FitResult';
 import {Resistances} from '../types/Resistances';
 
 import DogmaType from './modules/DogmaType';
-import Modifier from "./modifier/Modifier";
-import {default as DogmaEnvironment, DogmaEnvironmentType} from "./modifier/DogmaEnvironment";
+import Modifier from './modifier/Modifier';
+import {default as DogmaEnvironment, DogmaEnvironmentType} from './modifier/DogmaEnvironment';
 
 export default class Fit {
     // The ship selected for fitting
@@ -60,28 +60,22 @@ export default class Fit {
         // Calculate
         let fitResult: FitResult;
 
-        this.applyPreModifiers();
+        this.applyAllModifiers(this.getPreModifiers());
+        this.applyAllModifiers(this.getMidModifiers());
+        this.applyAllModifiers(this.getPostModifiers());
 
         console.log(this.ship.environment);
 
         return fitResult;
     }
 
-    applyPreModifiers() {
+    applyAllModifiers(modifierList: [DogmaType, Modifier[]][]) {
         const shipEnvironment = this.ship.environment;
         // const characterEnvironment = this.character.environment;
 
-        const preModifiers = this.getPreModifiers();
-
         // Every type has its own modifiers,
-        for (const [selfType, modifiers] of preModifiers) {
+        for (const [selfType, modifiers] of modifierList) {
             for (const modifier of modifiers) {
-
-                // Apply filter
-                if (modifier.getFilter() && !modifier.getFilter().contains(selfType)) {
-                    // If the modifier has a filter and the filter is not satisfied, skip the modifier?
-                    continue;
-                }
 
                 // Check what environment or environments this modifier modifies
                 if (modifier.environmentType === DogmaEnvironmentType.CHARACTER) {
@@ -89,6 +83,7 @@ export default class Fit {
                 } else if (modifier.environmentType === DogmaEnvironmentType.SHIP) {
                     // If there is a filter, then this modifiers applies to modules in the filter
                     if (modifier.getFilter()) {
+                        console.log('Has a filter', modifier.getFilter(), modifier);
                         for (const module of [...this.modules.low, ...this.modules.mid, ...this.modules.high]) {
                             modifier.applyModifier(selfType.environment, module.environment);
                         }
@@ -107,15 +102,29 @@ export default class Fit {
 
 
     getPreModifiers(): [DogmaType, Modifier[]][] {
-        const shipModifiers = [this.ship, this.ship.getPreModifiers()];
+        const shipModifiers = [this.ship, this.ship.getPreModifiers()] as [DogmaType, Modifier[]];
         // const characterModifiers = [this.character.environment, this.character.getPreModifiers()];
         const moduleModifiers = this.modules.getPreModifiers();
-        const skillModifiers = this.skills.map(x => [x.environment, x.getPreModifiers()]);
+        const skillModifiers = this.skills.map(x => [x, x.getPreModifiers()] as [DogmaType, Modifier[]]);
 
         return [shipModifiers, ...moduleModifiers, ...skillModifiers];
     }
 
-    private concatPreModifiers(types: DogmaType[]): Modifier[] {
-        return [].concat([], types.map(type => type.getPreModifiers()));
+    getMidModifiers(): [DogmaType, Modifier[]][] {
+        const shipModifiers = [this.ship, this.ship.getMidModifiers()] as [DogmaType, Modifier[]];
+        // const characterModifiers = [this.character.environment, this.character.getPreModifiers()];
+        const moduleModifiers = this.modules.getMidModifiers();
+        const skillModifiers = this.skills.map(x => [x, x.getMidModifiers()] as [DogmaType, Modifier[]]);
+
+        return [shipModifiers, ...moduleModifiers, ...skillModifiers];
+    }
+
+    getPostModifiers(): [DogmaType, Modifier[]][] {
+        const shipModifiers = [this.ship, this.ship.getPostModifiers()] as [DogmaType, Modifier[]];
+        // const characterModifiers = [this.character.environment, this.character.getPreModifiers()];
+        const moduleModifiers = this.modules.getPostModifiers();
+        const skillModifiers = this.skills.map(x => [x, x.getPostModifiers()] as [DogmaType, Modifier[]]);
+
+        return [shipModifiers, ...moduleModifiers, ...skillModifiers];
     }
 }

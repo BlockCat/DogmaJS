@@ -7,23 +7,25 @@ import Rig from './core/modules/Rig';
 import Implant from './core/modules/skills/Implant';
 import Booster from './core/modules/skills/Booster';
 import CacheHandler from './core/CacheHandler';
-import Skill from "./core/modules/skills/Skill";
+import Skill from './core/modules/skills/Skill';
 
 const fit = new Fit();
 fit.ship = new Ship(17740);
 
-fit.skills.push(new Skill(3336, 0));
-fit.skills.push(new Skill(3337, 0));
+fit.skills.push(new Skill(3336, 5));
+fit.skills.push(new Skill(3337, 5));
+fit.skills.push(new Skill(3413, 5));
+fit.skills.push(new Skill(12209, 5));
 
-fit.modules.high.push(new Module(2929, ModuleLocation.HIGH, ModuleState.ACTIVE, new Charge(12779)));
-fit.modules.high.push(new Module(2929, ModuleLocation.HIGH, ModuleState.ACTIVE, new Charge(12779)));
-fit.modules.high.push(new Module(2929, ModuleLocation.HIGH, ModuleState.ACTIVE, new Charge(12779)));
-fit.modules.high.push(new Module(2929, ModuleLocation.HIGH, ModuleState.ACTIVE, new Charge(12779)));
+fit.modules.high.push(new Module(12356, ModuleLocation.HIGH, ModuleState.ACTIVE, new Charge(12803)));
+fit.modules.high.push(new Module(12356, ModuleLocation.HIGH, ModuleState.ACTIVE, new Charge(12803)));
+fit.modules.high.push(new Module(12356, ModuleLocation.HIGH, ModuleState.ACTIVE, new Charge(12803)));
+fit.modules.high.push(new Module(12356, ModuleLocation.HIGH, ModuleState.ACTIVE, new Charge(12803)));
 
-fit.modules.high.push(new Module(2420, ModuleLocation.HIGH, ModuleState.OVERLOAD, new Charge(24519)));
-fit.modules.high.push(new Module(2420, ModuleLocation.HIGH, ModuleState.OVERLOAD, new Charge(24519)));
-fit.modules.high.push(new Module(2420, ModuleLocation.HIGH, ModuleState.OVERLOAD, new Charge(24519)));
-fit.modules.high.push(new Module(2420, ModuleLocation.HIGH, ModuleState.OVERLOAD, new Charge(24519)));
+fit.modules.high.push(new Module(12356, ModuleLocation.HIGH, ModuleState.ACTIVE, new Charge(12803)));
+fit.modules.high.push(new Module(12356, ModuleLocation.HIGH, ModuleState.ACTIVE, new Charge(12803)));
+fit.modules.high.push(new Module(12356, ModuleLocation.HIGH, ModuleState.ACTIVE, new Charge(12803)));
+fit.modules.high.push(new Module(12356, ModuleLocation.HIGH, ModuleState.ACTIVE, new Charge(12803)));
 
 fit.modules.mid.push(new Module(5945, ModuleLocation.MID, ModuleState.ACTIVE));
 fit.modules.mid.push(new Module(4833, ModuleLocation.MID, ModuleState.ACTIVE));
@@ -54,7 +56,7 @@ fit.boosters.push(new Booster(28674));
 
 fit.calculate();
 
-window.fit = fit;
+window['fit'] = fit;
 
 const printItem = function(typeId: number) {
     const itemEffects = CacheHandler.GetCacheHandler().GetTypeEffects(typeId);

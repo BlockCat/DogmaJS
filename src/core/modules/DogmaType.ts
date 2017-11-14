@@ -24,8 +24,12 @@ export default class DogmaType {
 
     constructor(itemId: number) {
         this.typeId = itemId;
-        this.environment = new DogmaEnvironment(this.typeId);
+        this.resetEnvironment();
         this.calculateModifiers();
+    }
+
+    protected resetEnvironment() {
+        this.environment = new DogmaEnvironment(this.typeId);
     }
 
     public getSkillRequirements(): number[] {
