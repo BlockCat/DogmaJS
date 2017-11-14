@@ -1,0 +1,46 @@
+<html>
+	<head>
+		<script src="./vendor.js"></script> 	
+		<script src="./app.js"></script>
+	</head>
+	<body>
+	<select id="input"></select>
+	<button onclick="loadItem()">Load Item</Button>
+	<div style="display: flex; flex-direction: row;">
+		<div style="flex: 1">
+			<h1>Attributes</h1>
+			<table>
+				<thead>
+					<th>Attribute</th>
+					<th>Value</th>
+					<th>Description</th>					
+				</thead>
+				<tbody id="attributeBody"></tbody>
+			</table>
+		</div>
+		<div style="flex: 1">
+			<h1>Effects</h1>
+			<table>
+				<thead>					
+					<th>description</th>			
+					<th>Expression</th>
+				</thead>
+				<tbody id="effectsBody"></tbody>
+			</table>
+			</body>
+		</div>
+	</div>
+	
+	<script>
+		window.getTypesAvailable();
+		var loadItem = function() {
+			
+			var typeId = document.getElementById('input').value;
+			console.log('Loading: ' + typeId);
+			window.loadAttributes(typeId);
+			window.loadEffects(typeId);
+		}
+
+		window.loadFit(window.fit);
+	</script>
+</html>

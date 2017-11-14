@@ -1,0 +1,742 @@
+[
+  {
+    "resultCategoryID": 4, 
+    "description": "add two numbers", 
+    "operandKey": "ADD", 
+    "format": "(%(arg1)s)+(%(arg2)s)", 
+    "arg2categoryID": 4, 
+    "pythonFormat": "(%(arg1)s)+(%(arg2)s)", 
+    "operandID": 1, 
+    "arg1categoryID": 4
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "add gang groupl modifier", 
+    "operandKey": "AGGM", 
+    "format": "[%(arg1)s].AGGM(%(arg2)s)", 
+    "arg2categoryID": 2, 
+    "pythonFormat": "dogma.AddGangGroupModifier(env,%(arg1)s, %(arg2)s)", 
+    "operandID": 2, 
+    "arg1categoryID": 5
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "add gang shipl modifier", 
+    "operandKey": "AGIM", 
+    "format": "[%(arg1)s].AGIM(%(arg2)s)", 
+    "arg2categoryID": 2, 
+    "pythonFormat": "dogma.AddGangShipModifier(env,%(arg1)s, %(arg2)s)", 
+    "operandID": 3, 
+    "arg1categoryID": 5
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "add gang owner required skill modifier", 
+    "operandKey": "AGORSM", 
+    "format": "[%(arg1)s].AGORSM(%(arg2)s)", 
+    "arg2categoryID": 2, 
+    "pythonFormat": "dogma.AddGangOwnerRequiredSkillModifier(env,%(arg1)s, %(arg2)s)", 
+    "operandID": 4, 
+    "arg1categoryID": 5
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "add gang required skill modifier", 
+    "operandKey": "AGRSM", 
+    "format": "[%(arg1)s].AGRSM(%(arg2)s)", 
+    "arg2categoryID": 2, 
+    "pythonFormat": "dogma.AddGangRequiredSkillModifier(env,%(arg1)s, %(arg2)s)", 
+    "operandID": 5, 
+    "arg1categoryID": 5
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "add item modifier", 
+    "operandKey": "AIM", 
+    "format": "(%(arg1)s).AddItemModifier (%(arg2)s)", 
+    "arg2categoryID": 2, 
+    "pythonFormat": "dogma.AddItemModifier(env,%(arg1)s, %(arg2)s)", 
+    "operandID": 6, 
+    "arg1categoryID": 5
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "add location group modifier", 
+    "operandKey": "ALGM", 
+    "format": "(%(arg1)s).AddLocationGroupModifier (%(arg2)s)", 
+    "arg2categoryID": 2, 
+    "pythonFormat": "dogma.AddLocationGroupModifier(env,%(arg1)s, %(arg2)s)", 
+    "operandID": 7, 
+    "arg1categoryID": 5
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "add location modifier", 
+    "operandKey": "ALM", 
+    "format": "(%(arg1)s).AddLocationModifier (%(arg2)s)", 
+    "arg2categoryID": 2, 
+    "pythonFormat": "dogma.AddLocationModifier(env,%(arg1)s, %(arg2)s)", 
+    "operandID": 8, 
+    "arg1categoryID": 5
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "add location required skill modifier", 
+    "operandKey": "ALRSM", 
+    "format": "(%(arg1)s).ALRSM(%(arg2)s)", 
+    "arg2categoryID": 2, 
+    "pythonFormat": "dogma.AddLocationRequiredSkillModifier(env,%(arg1)s, %(arg2)s)", 
+    "operandID": 9, 
+    "arg1categoryID": 5
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "logical and operation", 
+    "operandKey": "AND", 
+    "format": "(%(arg1)s) AND (%(arg2)s)", 
+    "arg2categoryID": 4, 
+    "pythonFormat": "(%(arg1)s and %(arg2)s)", 
+    "operandID": 10, 
+    "arg1categoryID": 4
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "add owner required skill modifier", 
+    "operandKey": "AORSM", 
+    "format": "(%(arg1)s).AORSM(%(arg2)s)", 
+    "arg2categoryID": 2, 
+    "pythonFormat": "dogma.AddOwnerRequiredSkillModifier(env,%(arg1)s, %(arg2)s)", 
+    "operandID": 11, 
+    "arg1categoryID": 5
+  }, 
+  {
+    "resultCategoryID": 3, 
+    "description": "attribute", 
+    "operandKey": "ATT", 
+    "format": "%(arg1)s->%(arg2)s", 
+    "arg2categoryID": 2, 
+    "pythonFormat": "(%(arg1)s, %(arg2)s)", 
+    "operandID": 12, 
+    "arg1categoryID": 6
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "attack given ship", 
+    "operandKey": "ATTACK", 
+    "format": "Attack", 
+    "arg2categoryID": null, 
+    "pythonFormat": "Attack(env, %(arg1)s, %(arg2)s)", 
+    "operandID": 13, 
+    "arg1categoryID": 2
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "Scans the cargo of the targeted ship.", 
+    "operandKey": "CARGOSCAN", 
+    "format": "CargoScan", 
+    "arg2categoryID": null, 
+    "pythonFormat": "CargoScan(env, None, None)", 
+    "operandID": 14, 
+    "arg1categoryID": null
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "Instantly enter a station.", 
+    "operandKey": "CHEATTELEDOCK", 
+    "format": "CheatTeleDock()", 
+    "arg2categoryID": null, 
+    "pythonFormat": "CheatTeleDock(env, None, None)", 
+    "operandID": 15, 
+    "arg1categoryID": null
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "Automatically invoke a stargate destination from remote distances.", 
+    "operandKey": "CHEATTELEGATE", 
+    "format": "CheatTeleGate()", 
+    "arg2categoryID": null, 
+    "pythonFormat": "dogma.CheatTeleGate(env, None, None)", 
+    "operandID": 16, 
+    "arg1categoryID": null
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "executes two statements", 
+    "operandKey": "COMBINE", 
+    "format": "%(arg1)s);     (%(arg2)s", 
+    "arg2categoryID": 4, 
+    "pythonFormat": "%(arg1)s\r\n%(arg2)s", 
+    "operandID": 17, 
+    "arg1categoryID": 4
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "decreases an item-attribute by the value of another attribute", 
+    "operandKey": "DEC", 
+    "format": "%(arg1)s-=self.%(arg2)s", 
+    "arg2categoryID": 2, 
+    "pythonFormat": " ", 
+    "operandID": 18, 
+    "arg1categoryID": 3
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "broadcasts a decloaking wave", 
+    "operandKey": "DECLOAKWAVE", 
+    "format": "DecloakWave", 
+    "arg2categoryID": null, 
+    "pythonFormat": "DecloakWave(env, None, None)", 
+    "operandID": 19, 
+    "arg1categoryID": null
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "decreases an item-attribute by number", 
+    "operandKey": "DECN", 
+    "format": "%(arg1)s-=%(arg2)s", 
+    "arg2categoryID": 4, 
+    "pythonFormat": " ", 
+    "operandID": 20, 
+    "arg1categoryID": 3
+  }, 
+  {
+    "resultCategoryID": 1, 
+    "description": "define attribute association type", 
+    "operandKey": "DEFASSOCIATION", 
+    "format": "%(value)s", 
+    "arg2categoryID": null, 
+    "pythonFormat": "const.dgmAss%(value)s", 
+    "operandID": 21, 
+    "arg1categoryID": null
+  }, 
+  {
+    "resultCategoryID": 2, 
+    "description": "define attribute", 
+    "operandKey": "DEFATTRIBUTE", 
+    "format": "%(value)s", 
+    "arg2categoryID": null, 
+    "pythonFormat": "%(value)s", 
+    "operandID": 22, 
+    "arg1categoryID": null
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "define bool constant", 
+    "operandKey": "DEFBOOL", 
+    "format": "Bool(%(value)s)", 
+    "arg2categoryID": null, 
+    "pythonFormat": "%(value)s", 
+    "operandID": 23, 
+    "arg1categoryID": null
+  }, 
+  {
+    "resultCategoryID": 6, 
+    "description": "define environment index", 
+    "operandKey": "DEFENVIDX", 
+    "format": "Current%(value)s", 
+    "arg2categoryID": null, 
+    "pythonFormat": "env[const.dgmEnv%(value)s]", 
+    "operandID": 24, 
+    "arg1categoryID": null
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "defines a float constant", 
+    "operandKey": "DEFFLOAT", 
+    "format": "Float(%(value)s)", 
+    "arg2categoryID": null, 
+    "pythonFormat": " ", 
+    "operandID": 25, 
+    "arg1categoryID": null
+  }, 
+  {
+    "resultCategoryID": 8, 
+    "description": "define group", 
+    "operandKey": "DEFGROUP", 
+    "format": "%(value)s", 
+    "arg2categoryID": null, 
+    "pythonFormat": " ", 
+    "operandID": 26, 
+    "arg1categoryID": null
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "defines an int constant", 
+    "operandKey": "DEFINT", 
+    "format": "Int(%(value)s)", 
+    "arg2categoryID": null, 
+    "pythonFormat": "%(value)s", 
+    "operandID": 27, 
+    "arg1categoryID": null
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "defines a string constant", 
+    "operandKey": "DEFSTRING", 
+    "format": "\"%(value)s\"", 
+    "arg2categoryID": null, 
+    "pythonFormat": "\"%(value)s\"", 
+    "operandID": 28, 
+    "arg1categoryID": null
+  }, 
+  {
+    "resultCategoryID": 9, 
+    "description": "define a type ID", 
+    "operandKey": "DEFTYPEID", 
+    "format": "Type(%(value)s)", 
+    "arg2categoryID": null, 
+    "pythonFormat": " ", 
+    "operandID": 29, 
+    "arg1categoryID": null
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "Clears all targets on all ships(excluding self) wihin range. ", 
+    "operandKey": "ECMBURST", 
+    "format": "ECMBurst()", 
+    "arg2categoryID": null, 
+    "pythonFormat": "dogma.ECMBurst(env, None, None)", 
+    "operandID": 30, 
+    "arg1categoryID": null
+  }, 
+  {
+    "resultCategoryID": 5, 
+    "description": "define association type", 
+    "operandKey": "EFF", 
+    "format": "(%(arg2)s).(%(arg1)s)", 
+    "arg2categoryID": 3, 
+    "pythonFormat": "(%(arg1)s, %(arg2)s)", 
+    "operandID": 31, 
+    "arg1categoryID": 1
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "broadcasts an EMP wave", 
+    "operandKey": "EMPWAVE", 
+    "format": "EMPWave", 
+    "arg2categoryID": null, 
+    "pythonFormat": "EMPWave(env, None, None)", 
+    "operandID": 32, 
+    "arg1categoryID": null
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "checks for equality", 
+    "operandKey": "EQ", 
+    "format": "%(arg1)s == %(arg2)s", 
+    "arg2categoryID": 4, 
+    "pythonFormat": "(%(arg1)s == %(arg2)s)", 
+    "operandID": 33, 
+    "arg1categoryID": 4
+  }, 
+  {
+    "resultCategoryID": 3, 
+    "description": "attribute on a module group", 
+    "operandKey": "GA", 
+    "format": "%(arg1)s.%(arg2)s", 
+    "arg2categoryID": 2, 
+    "pythonFormat": "(%(arg1)s, %(arg2)s)", 
+    "operandID": 34, 
+    "arg1categoryID": 8
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "calculate attribute", 
+    "operandKey": "GET", 
+    "format": "%(arg1)s.%(arg2)s()", 
+    "arg2categoryID": 2, 
+    "pythonFormat": "dogmaLM.GetAttributeValue(%(arg1)s, %(arg2)s)", 
+    "operandID": 35, 
+    "arg1categoryID": 6
+  }, 
+  {
+    "resultCategoryID": 9, 
+    "description": "gets type of item", 
+    "operandKey": "GETTYPE", 
+    "format": "%(arg1)s.GetTypeID()", 
+    "arg2categoryID": null, 
+    "pythonFormat": "env.itemTypeID", 
+    "operandID": 36, 
+    "arg1categoryID": 6
+  }, 
+  {
+    "resultCategoryID": 6, 
+    "description": "get a module of a given groupID from a given location (ship or player)", 
+    "operandKey": "GM", 
+    "format": "%(arg1)s.%(arg2)s", 
+    "arg2categoryID": 8, 
+    "pythonFormat": "dogma.GetModule(env,%(arg1)s,%(arg2)s)", 
+    "operandID": 37, 
+    "arg1categoryID": 6
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "checks whether expression 1  is greater than expression 2", 
+    "operandKey": "GT", 
+    "format": "%(arg1)s> %(arg2)s", 
+    "arg2categoryID": 4, 
+    "pythonFormat": "(%(arg1)s > %(arg2)s)", 
+    "operandID": 38, 
+    "arg1categoryID": 4
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "checks whether an expression is greater than or equal to another", 
+    "operandKey": "GTE", 
+    "format": "%(arg1)s>=%(arg2)s", 
+    "arg2categoryID": 4, 
+    "pythonFormat": "(%(arg1)s >= %(arg2)s)", 
+    "operandID": 39, 
+    "arg1categoryID": 4
+  }, 
+  {
+    "resultCategoryID": 3, 
+    "description": "generic attribute", 
+    "operandKey": "IA", 
+    "format": "%(arg1)s", 
+    "arg2categoryID": null, 
+    "pythonFormat": "%(arg1)s", 
+    "operandID": 40, 
+    "arg1categoryID": 2
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "if construct", 
+    "operandKey": "IF", 
+    "format": "If(%(arg1)s), Then (%(arg2)s)", 
+    "arg2categoryID": 4, 
+    "pythonFormat": "if %(arg1)s:\r\n    %(arg2)s", 
+    "operandID": 41, 
+    "arg1categoryID": 4
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "increases an item-attribute by the value of another attribute", 
+    "operandKey": "INC", 
+    "format": "%(arg1)s+=self.%(arg2)s", 
+    "arg2categoryID": 2, 
+    "pythonFormat": "<handled in code>", 
+    "operandID": 42, 
+    "arg1categoryID": 3
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "increases an item-attribute by a number", 
+    "operandKey": "INCN", 
+    "format": "%(arg1)s+=%(arg2)s", 
+    "arg2categoryID": 4, 
+    "pythonFormat": " ", 
+    "operandID": 43, 
+    "arg1categoryID": 3
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "launches a missile", 
+    "operandKey": "LAUNCH", 
+    "format": "LaunchMissile()", 
+    "arg2categoryID": null, 
+    "pythonFormat": "dogma.Launch(env, None, None)", 
+    "operandID": 44, 
+    "arg1categoryID": null
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "launches a defender missile", 
+    "operandKey": "LAUNCHDEFENDERMISSILE", 
+    "format": "LaunchDefenderMissile()", 
+    "arg2categoryID": null, 
+    "pythonFormat": "dogma.LaunchDefenderMissile(env, None, None)", 
+    "operandID": 45, 
+    "arg1categoryID": null
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "launches a drone.", 
+    "operandKey": "LAUNCHDRONE", 
+    "format": "LaunchDrone()", 
+    "arg2categoryID": null, 
+    "pythonFormat": "dogma.Launch(env, None, None)", 
+    "operandID": 46, 
+    "arg1categoryID": null
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "launches an FOF missile", 
+    "operandKey": "LAUNCHFOFMISSILE", 
+    "format": "LaunchFOFMissile()", 
+    "arg2categoryID": null, 
+    "pythonFormat": "dogma.LaunchFOFMissile(env, None, None)", 
+    "operandID": 47, 
+    "arg1categoryID": null
+  }, 
+  {
+    "resultCategoryID": 6, 
+    "description": "specify a group in a location", 
+    "operandKey": "LG", 
+    "format": "%(arg1)s..%(arg2)s", 
+    "arg2categoryID": 8, 
+    "pythonFormat": "(%(arg1)s, %(arg2)s)", 
+    "operandID": 48, 
+    "arg1categoryID": 6
+  }, 
+  {
+    "resultCategoryID": 6, 
+    "description": "location - skill required item group", 
+    "operandKey": "LS", 
+    "format": "%(arg1)s[%(arg2)s]", 
+    "arg2categoryID": 9, 
+    "pythonFormat": "(%(arg1)s, %(arg2)s)", 
+    "operandID": 49, 
+    "arg1categoryID": 6
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "mines an asteroid", 
+    "operandKey": "MINE", 
+    "format": "Mine", 
+    "arg2categoryID": null, 
+    "pythonFormat": "Mine(env, None, None)", 
+    "operandID": 50, 
+    "arg1categoryID": null
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "multiplies two numbers", 
+    "operandKey": "MUL", 
+    "format": "(%(arg1)s)*(%(arg2)s)", 
+    "arg2categoryID": 4, 
+    "pythonFormat": "(%(arg1)s * %(arg2)s)", 
+    "operandID": 51, 
+    "arg1categoryID": 4
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "logical or operation", 
+    "operandKey": "OR", 
+    "format": "%(arg1)s OR %(arg2)s", 
+    "arg2categoryID": 4, 
+    "pythonFormat": "(%(arg1)s or %(arg2)s)", 
+    "operandID": 52, 
+    "arg1categoryID": 4
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "", 
+    "operandKey": "POWERBOOST", 
+    "format": "PowerBoost", 
+    "arg2categoryID": null, 
+    "pythonFormat": "dogma.PowerBoost(env, None, None)", 
+    "operandID": 53, 
+    "arg1categoryID": null
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "remove gang groupl modifier", 
+    "operandKey": "RGGM", 
+    "format": "[%(arg1)s].RGGM(%(arg2)s)", 
+    "arg2categoryID": 2, 
+    "pythonFormat": "dogma.RemoveGangGroupModifier(env,%(arg1)s, %(arg2)s)", 
+    "operandID": 54, 
+    "arg1categoryID": 5
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "remove gang shipl modifier", 
+    "operandKey": "RGIM", 
+    "format": "[%(arg1)s].RGIM(%(arg2)s)", 
+    "arg2categoryID": 2, 
+    "pythonFormat": "dogma.RemoveGangShipModifier(env,%(arg1)s, %(arg2)s)", 
+    "operandID": 55, 
+    "arg1categoryID": 5
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "remove a gang owner required skill modifier", 
+    "operandKey": "RGORSM", 
+    "format": "[%(arg1)s].RGORSM(%(arg2)s)", 
+    "arg2categoryID": 2, 
+    "pythonFormat": "dogma.RemoveGangOwnerRequiredSkillModifier(env,%(arg1)s, %(arg2)s)", 
+    "operandID": 56, 
+    "arg1categoryID": 5
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "remove a gang required skill modifier", 
+    "operandKey": "RGRSM", 
+    "format": "[%(arg1)s].RGRSM(%(arg2)s)", 
+    "arg2categoryID": 2, 
+    "pythonFormat": "dogma.RemoveGangRequiredSkillModifier(env,%(arg1)s, %(arg2)s)", 
+    "operandID": 57, 
+    "arg1categoryID": 5
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "remove  item modifier", 
+    "operandKey": "RIM", 
+    "format": "(%(arg1)s).RemoveItemModifier (%(arg2)s)", 
+    "arg2categoryID": 2, 
+    "pythonFormat": "dogma.RemoveItemModifier(env,%(arg1)s, %(arg2)s)", 
+    "operandID": 58, 
+    "arg1categoryID": 5
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "remove location group modifier", 
+    "operandKey": "RLGM", 
+    "format": "(%(arg1)s).RemoveLocationGroupModifier (%(arg2)s)", 
+    "arg2categoryID": 2, 
+    "pythonFormat": "dogma.RemoveLocationGroupModifier(env,%(arg1)s, %(arg2)s)", 
+    "operandID": 59, 
+    "arg1categoryID": 5
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "remove location modifier", 
+    "operandKey": "RLM", 
+    "format": "(%(arg1)s).RemoveLocationModifier (%(arg2)s)", 
+    "arg2categoryID": 2, 
+    "pythonFormat": "dogma.RemoveLocationModifier(env,%(arg1)s, %(arg2)s)", 
+    "operandID": 60, 
+    "arg1categoryID": 5
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "remove a  required skill modifier", 
+    "operandKey": "RLRSM", 
+    "format": "(%(arg1)s).RLRSM(%(arg2)s)", 
+    "arg2categoryID": 2, 
+    "pythonFormat": "dogma.RemoveLocationRequiredSkillModifier(env,%(arg1)s, %(arg2)s)", 
+    "operandID": 61, 
+    "arg1categoryID": 5
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "remove an owner required skill modifier", 
+    "operandKey": "RORSM", 
+    "format": "(%(arg1)s).RORSM(%(arg2)s)", 
+    "arg2categoryID": 2, 
+    "pythonFormat": "dogma.RemoveOwnerRequiredSkillModifier(env,%(arg1)s, %(arg2)s)", 
+    "operandID": 62, 
+    "arg1categoryID": 5
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "true if arg1 requires arg2", 
+    "operandKey": "RS", 
+    "format": "%(arg1)s.Requires(%(arg2)s)", 
+    "arg2categoryID": 9, 
+    "pythonFormat": "dogma.RequireSkill(env, %(arg1)s, %(arg2)s)", 
+    "operandID": 63, 
+    "arg1categoryID": 6
+  }, 
+  {
+    "resultCategoryID": 3, 
+    "description": "attribute on modules that have required skill", 
+    "operandKey": "RSA", 
+    "format": "%(arg1)s.%(arg2)s", 
+    "arg2categoryID": 2, 
+    "pythonFormat": "(%(arg1)s, %(arg2)s)", 
+    "operandID": 64, 
+    "arg1categoryID": 9
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "sets an item attribute", 
+    "operandKey": "SET", 
+    "format": "%(arg1)s := %(arg2)s", 
+    "arg2categoryID": 4, 
+    "pythonFormat": "<handled in code>", 
+    "operandID": 65, 
+    "arg1categoryID": 3
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "scans a ship", 
+    "operandKey": "SHIPSCAN", 
+    "format": "ShipScan()", 
+    "arg2categoryID": null, 
+    "pythonFormat": "ShipScan(env, None, None)", 
+    "operandID": 66, 
+    "arg1categoryID": null
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "", 
+    "operandKey": "SKILLCHECK", 
+    "format": "SkillCheck(%(arg1)s)", 
+    "arg2categoryID": null, 
+    "pythonFormat": "dogma.SkillCheck(env, %(arg1)s, %(arg2)s)", 
+    "operandID": 67, 
+    "arg1categoryID": 4
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "subtracts a number from another one", 
+    "operandKey": "SUB", 
+    "format": "%(arg1)s-%(arg2)s", 
+    "arg2categoryID": 4, 
+    "pythonFormat": " ", 
+    "operandID": 68, 
+    "arg1categoryID": 4
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "scans an asteroid for information", 
+    "operandKey": "SURVEYSCAN", 
+    "format": "SurveyScan()", 
+    "arg2categoryID": null, 
+    "pythonFormat": "SurveyScan(env, None, None)", 
+    "operandID": 69, 
+    "arg1categoryID": null
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "Targets any hostile ships within range (assuming electronics have capability).", 
+    "operandKey": "TARGETHOSTILES", 
+    "format": "TargetHostiles()", 
+    "arg2categoryID": null, 
+    "pythonFormat": "dogma.TargetHostiles(env, None, None)", 
+    "operandID": 70, 
+    "arg1categoryID": null
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "", 
+    "operandKey": "TARGETSILENTLY", 
+    "format": "TargetSilently()", 
+    "arg2categoryID": null, 
+    "pythonFormat": "dogmaLM.AddTargetEx(shipID,targetID, silent=1, tasklet=1)", 
+    "operandID": 71, 
+    "arg1categoryID": null
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": " ", 
+    "operandKey": "TOOLTARGETSKILLS", 
+    "format": "CheckToolTargetSkills", 
+    "arg2categoryID": null, 
+    "pythonFormat": "dogma.CheckToolTargetSkills(env,None,None)", 
+    "operandID": 72, 
+    "arg1categoryID": null
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "raises an user error", 
+    "operandKey": "UE", 
+    "format": "UserError(%(arg1)s)", 
+    "arg2categoryID": null, 
+    "pythonFormat": "raise UserError(%(arg1)s)", 
+    "operandID": 73, 
+    "arg1categoryID": 4
+  }, 
+  {
+    "resultCategoryID": 4, 
+    "description": "raises a user error if incorrect target group", 
+    "operandKey": "VERIFYTARGETGROUP", 
+    "format": "VerifyTargetGroup()", 
+    "arg2categoryID": null, 
+    "pythonFormat": "dogma.VerifyTargetGroup(env, None, None)", 
+    "operandID": 74, 
+    "arg1categoryID": null
+  }
+]
