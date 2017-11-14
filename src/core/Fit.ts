@@ -73,26 +73,41 @@ export default class Fit {
 
         const preModifiers = this.getPreModifiers();
 
-        for (const [selfEnvironment, modifiers] of preModifiers) {
+        // Every type has its own modifiers,
+        for (const [selfType, modifiers] of preModifiers) {
             for (const modifier of modifiers) {
-                let environment: DogmaEnvironment;
-                switch (modifier.environmentType) {
-                    case DogmaEnvironmentType.CHARACTER:
-                        environment = characterEnvironment;
-                        break;
-                    case DogmaEnvironmentType.SHIP:
-                        environment = shipEnvironment;
-                        break;
-                    default:
-                        environment = selfEnvironment;
+
+                // Apply filter
+                if (modifier.getFilter() && !modifier.getFilter().contains(selfType)) {
+                    // If the modifier has a filter and the filter is not satisfied, skip the modifier?
+                    continue;
                 }
-                modifier.apply(selfEnvironment, environment);
+
+                // Check what environment or environments this modifier modifies
+                if (modifier.environmentType === DogmaEnvironmentType.CHARACTER) {
+                    // Not yet implemented
+                } else if (modifier.environmentType === DogmaEnvironmentType.SHIP) {
+                    // If there is a filter, then this modifiers applies to modules in the filter
+                    if (modifier.getFilter()) {
+                        for (const module of [...this.modules.low, ...this.modules.mid, ...this.modules.high]) {
+                            modifier.applyModifier(selfType.environment, module.environment);
+                        }
+                    } else {
+                        // Apply this modifier to the ship itself.
+                        modifier.applyModifier(selfType.environment, this.ship.environment);
+                    }
+                } else {
+                    // only self environment
+                    modifier.applyModifier(selfType.environment, selfType.environment);
+                }
             }
         }
     }
 
-    getPreModifiers(): [DogmaEnvironment, Modifier[]][] {
-        const shipModifiers = [this.ship.environment, this.ship.getPreModifiers()];
+
+
+    getPreModifiers(): [DogmaType, Modifier[]][] {
+        const shipModifiers = [this.ship, this.ship.getPreModifiers()];
         // const characterModifiers = [this.character.environment, this.character.getPreModifiers()];
         const moduleModifiers = this.modules.getPreModifiers();
         const skillModifiers = this.skills.map(x => [x.environment, x.getPreModifiers()]);

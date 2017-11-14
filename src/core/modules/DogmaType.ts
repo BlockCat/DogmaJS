@@ -3,6 +3,7 @@ import DogmaEnvironment, {DogmaEnvironmentType} from '../modifier/DogmaEnvironme
 import CacheHandler from '../CacheHandler';
 import {DogmaAttribute} from '../../types/DogmaTypes';
 import Modifier, {DogmaAssociation} from "../modifier/Modifier";
+import {Filter} from '../modifier/Filter';
 
 
 // Every ship, module, rig, skill etc that changes stats on a ship are items.
@@ -19,11 +20,32 @@ export default class DogmaType {
     private midModifiers: Modifier[];
     private postModifiers: Modifier[];
 
+    private skillRequirements: number[];
+
     constructor(itemId: number) {
         this.typeId = itemId;
         this.environment = new DogmaEnvironment(this.typeId);
         this.calculateModifiers();
     }
+
+    public getSkillRequirements(): number[] {
+        if (this.skillRequirements) {
+            return this.skillRequirements;
+        }
+
+        const skillRequirements = this.getAttributes()
+            .filter(x => /^requiredSkill/.test(x[0].attributeName))
+            .map(x => x[1]);
+
+        this.skillRequirements = skillRequirements;
+
+        return skillRequirements;
+    }
+
+    public getGroupId(): number {
+        return CacheHandler.GetCacheHandler().GetGroupId(this.typeId);
+    }
+
 
     private calculateModifiers() {
         this.preModifiers = [];

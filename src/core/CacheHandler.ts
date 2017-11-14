@@ -2,6 +2,7 @@ import * as operandsJson from '../cache/dogma()_GetOperandsForChar().json';
 import * as expressionsJson from '../cache/dgmexpressions.json';
 import * as attributesJson from '../cache/dgmattribs.json';
 import * as effectsJson from '../cache/dgmeffects.json';
+import * as typesJson from '../cache/invtypes.json';
 
 import * as typeAttributeJson from '../cache/dgmtypeattribs.json';
 import * as typeEffectsJson from '../cache/dgmtypeeffects.json';
@@ -18,9 +19,11 @@ export default class CacheHandler {
     private attributesDictionary: {[id: number]: DogmaAttribute};
     private attributeNameDictionary: {[name: string]: DogmaAttribute};
     private effectsDictionary: {[id: number]: DogmaEffect};
+    private typeDictionary: {[id: number]: number};
 
     private typeAttributeBinding: {[id: number]: [DogmaAttribute, number][]};
     private typeEffecetsBinding: {[id: number]: [DogmaEffect, boolean][]};
+
 
     constructor() {
         console.log('Loading data');
@@ -74,6 +77,13 @@ export default class CacheHandler {
         this.effectsDictionary = {};
         for (const json of <any>effectsJson) {
             this.effectsDictionary[json.effectID] = new DogmaEffect(json.effectID, json.description, json.name, json.preExpression);
+        }
+    }
+
+    private loadTypeGroups() {
+        this.typeDictionary = {};
+        for (const json of <any>typesJson) {
+            this.typeDictionary[json.typeID] = json.groupID;
         }
     }
 
@@ -133,5 +143,9 @@ export default class CacheHandler {
 
     public GetTypesBound() {
         return Object.keys(this.typeEffecetsBinding);
+    }
+
+    public GetGroupId(typeId: number) {
+        return this.typeDictionary[typeId];
     }
 }

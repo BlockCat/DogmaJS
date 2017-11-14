@@ -2,6 +2,7 @@ import Module from "./Module";
 import DogmaEffect from "../effects/DogmaEffect";
 import Modifier from "../modifier/Modifier";
 import DogmaEnvironment from "../modifier/DogmaEnvironment";
+import DogmaType from './DogmaType';
 
 export default class ModuleHandler {
     high: Module[];
@@ -14,10 +15,10 @@ export default class ModuleHandler {
         this.low = [];
     }
 
-    getPreModifiers(): [DogmaEnvironment, Modifier[]][] {
-        const highModifiers = this.high.map(x => [x.environment, x.getPreModifiers()]);
-        const midModifiers = this.high.map(x => [x.environment, x.getPreModifiers()]);
-        const lowModifiers = this.high.map(x => [x.environment, x.getPreModifiers()]);
+    getPreModifiers(): [DogmaType, Modifier[]][] {
+        const highModifiers = this.high.map(x => [x, x.getPreModifiers()]);
+        const midModifiers = this.high.map(x => [x, x.getPreModifiers()]);
+        const lowModifiers = this.high.map(x => [x, x.getPreModifiers()]);
 
         return [...lowModifiers, ...midModifiers, ...highModifiers];
     }

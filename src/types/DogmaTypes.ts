@@ -17,6 +17,8 @@ export interface DogmaExpression {
     operandID: number;
     expressionID: number;
     expressionAttributeID: number;
+    expressionTypeID: number;
+    expressionGroupID: number;
 
     tree: DogmaExpressionTree;
 }

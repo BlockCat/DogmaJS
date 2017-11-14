@@ -63,7 +63,7 @@ export default class DogmaEffect {
             newModifier.setFilter(new TypeFilter(filterType));
         } else if (tree.arg1.arg2.arg1.operand.operandKey === 'LG') {
             // Group filter
-            const filterGroup = tree.arg1.arg2.arg1.arg2.expression.expressionTypeID;
+            const filterGroup = tree.arg1.arg2.arg1.arg2.expression.expressionGroupID;
             dogmaEnvironmentType = tree.arg1.arg2.arg1.arg1.expression.expressionName as DogmaEnvironmentType;
             newModifier.setFilter(new GroupFilter(filterGroup));
         } else {

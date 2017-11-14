@@ -25,7 +25,11 @@ export default class Modifier {
         this.filter = filter;
     }
 
-    apply(selfEnvironment: DogmaEnvironment, environment: DogmaEnvironment) {
+    getFilter(): Filter {
+        return this.filter;
+    }
+
+    applyModifier(selfEnvironment: DogmaEnvironment, environment: DogmaEnvironment) {
         environment.changeAttribute(this.attribute, selfEnvironment.getAttributeValue(this.changeAttribute), this.operation);
     }
 }
