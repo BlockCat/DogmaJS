@@ -1,4 +1,8 @@
+# DogmaJS
 
+> Any application that can be written in JavaScript, will eventually be written in JavaScript
+
+So here is a fitting simulator implementation of EVE Online in JavaScript (Typescript)
 
 # Build:
 ## Requirements
