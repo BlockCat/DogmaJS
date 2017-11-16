@@ -4,6 +4,101 @@
 		<script src="./app.js"></script>
 	</head>
 	<body>
+	<div style="display: flex; flex-direction: row">
+		<div style="flex: 1;" id="high_mod">
+			<h1>High</h1>
+		</div>
+		<div style="flex: 1;" id="mid_mod">
+			<h1>Mid</h1>
+		</div>
+		<div style="flex: 1;" id="low_mod">
+			<h1>Low</h1>
+		</div>
+	</div>
+	<div>
+		<h1>Calculated attributes</h1>
+		<div style="display: flex; flex-direction: row">
+
+
+			<div style="flex: 1">
+
+				<h1>Shield resistance</h1>
+				<div>
+					<h3>Shield</h3>
+					<p id="shield_hp"></p>
+				</div>
+				<table>
+					<tr>
+						<td>EM</td>
+						<td id="shield_em"></td>
+					</tr>
+					<tr>
+						<td>Kinetic</td>
+						<td id="shield_kinetic"></td>
+					</tr>
+					<tr>
+						<td>Explosive</td>
+						<td id="shield_explosive"></td>
+					</tr>
+					<tr>
+						<td>Heat</td>
+						<td id="shield_heat"></td>
+					</tr>
+				</table>
+			</div>
+			<div style="flex: 1">
+				<h1>Armor resistance</h1>
+				<div>
+					<h3>Armor</h3>
+					<p id="armor_hp"></p>
+				</div>
+				<table>
+					<tr>
+						<td>EM</td>
+						<td id="armor_em"></td>
+					</tr>
+					<tr>
+						<td>Kinetic</td>
+						<td id="armor_kinetic"></td>
+					</tr>
+					<tr>
+						<td>Explosive</td>
+						<td id="armor_explosive"></td>
+					</tr>
+					<tr>
+						<td>Heat</td>
+						<td id="armor_heat"></td>
+					</tr>
+				</table>
+			</div>
+			<div style="flex: 1">
+				<h1>Hull resistance</h1>
+				<div>
+					<h>Hull</h>
+					<p id="hull_hp"></p>
+				</div>
+				<table>
+					<tr>
+						<td>EM</td>
+						<td id="hull_em"></td>
+					</tr>
+					<tr>
+						<td>Kinetic</td>
+						<td id="hull_kinetic"></td>
+					</tr>
+					<tr>
+						<td>Explosive</td>
+						<td id="hull_explosive"></td>
+					</tr>
+					<tr>
+						<td>Heat</td>
+						<td id="hull_heat"></td>
+					</tr>
+				</table>
+			</div>
+
+		</div>
+	</div>
 	<select id="input"></select>
 	<button onclick="loadItem()">Load Item</Button>
 	<div style="display: flex; flex-direction: row;">
@@ -42,5 +137,7 @@
 		}
 
 		window.loadFit(window.fit);
+
+
 	</script>
 </html>

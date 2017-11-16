@@ -105,6 +105,8 @@ export default class Fit {
         const shipModifiers = [this.ship, this.ship.getPreModifiers()] as [DogmaType, Modifier[]];
         // const characterModifiers = [this.character.environment, this.character.getPreModifiers()];
         const moduleModifiers = this.modules.getPreModifiers();
+
+
         const skillModifiers = this.skills.map(x => [x, x.getPreModifiers()] as [DogmaType, Modifier[]]);
 
         return [shipModifiers, ...moduleModifiers, ...skillModifiers];

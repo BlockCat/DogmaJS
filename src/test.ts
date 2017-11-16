@@ -72,21 +72,14 @@ const printItem = function(typeId: number) {
 };
 
 const loadFit = function(fit: Fit) {
-    const parent = document.getElementById('attributeBody');
-    parent.innerHTML = '';
+    document.getElementById('shield_hp').innerHTML = fit.ship.environment.getAttributeValueByName('shieldCapacity')+ '';
+    document.getElementById('armor_hp').innerHTML = fit.ship.environment.getAttributeValueByName('armorHP') + '';
+    document.getElementById('hull_hp').innerHTML = fit.ship.environment.getAttributeValueByName('hp') + '';
 
-    const attributes = fit.ship.environment.attributes;
-
-    for (const attributeName of Object.keys(attributes)) {
-
-        const attrib = '<td>' + attributeName + '</td>';
-        const descr = '<td></td>';
-        const value = '<td>' + attributes[attributeName] + '</td>';
-
-        const nChild = '<tr>' + attrib + value + descr + '</tr>';
-
-        parent.insertAdjacentHTML('beforeend', nChild);
-    }
+    document.getElementById('shield_em').innerHTML = ((1 -fit.ship.environment.getAttributeValueByName('shieldEmDamageResonance')) * 100) + '%';
+    document.getElementById('shield_kinetic').innerHTML = ((1 - fit.ship.environment.getAttributeValueByName('shieldKineticDamageResonance')) * 100) + '%';
+    document.getElementById('shield_explosive').innerHTML = ((1 - fit.ship.environment.getAttributeValueByName('shieldExplosiveDamageResonance')) * 100) + '%';
+    document.getElementById('shield_heat').innerHTML = ((1 -fit.ship.environment.getAttributeValueByName('shieldThermalDamageResonance')) * 100) + '%';
 };
 
 window['loadFit'] = loadFit;

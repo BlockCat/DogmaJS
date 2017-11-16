@@ -16,9 +16,9 @@ export default class DogmaType {
     public typeId: number;
     public environment: DogmaEnvironment;
 
-    private preModifiers: Modifier[];
-    private midModifiers: Modifier[];
-    private postModifiers: Modifier[];
+    protected preModifiers: Modifier[];
+    protected midModifiers: Modifier[];
+    protected postModifiers: Modifier[];
 
     private skillRequirements: number[];
 
@@ -51,7 +51,7 @@ export default class DogmaType {
     }
 
 
-    private calculateModifiers() {
+    protected calculateModifiers() {
         this.preModifiers = [];
         this.midModifiers = [];
         this.postModifiers = [];

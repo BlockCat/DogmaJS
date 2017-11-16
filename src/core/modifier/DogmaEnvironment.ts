@@ -29,11 +29,16 @@ export default class DogmaEnvironment {
         this.attributes[attribute] = value;
     }
 
-    getAttributeValue(attribute: DogmaAttribute): number {
-        if (!(attribute.attributeName in this.attributes))  {
-            this.attributes[attribute.attributeName] = attribute.defaultValue;
+    getAttributeValueByName(attribute: string): number {
+        if (!(attribute in this.attributes))  {
+            this.attributes[attribute] = CacheHandler.GetCacheHandler().GetAttributeByName(attribute).defaultValue;
         }
-        return this.attributes[attribute.attributeName];
+        return this.attributes[attribute];
+    }
+
+    getAttributeValue(attribute: DogmaAttribute): number {
+
+        return this.getAttributeValueByName(attribute.attributeName);
     }
 
     changeAttribute(attribute: DogmaAttribute, value: number, association: DogmaAssociation) {

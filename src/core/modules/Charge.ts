@@ -5,4 +5,5 @@ export default class Charge extends DogmaItem {
     constructor(typeId: number) {
         super(typeId);
     }
+
 }

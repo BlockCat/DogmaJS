@@ -15,42 +15,26 @@ export default class ModuleHandler {
         this.low = [];
     }
 
-    getPreModifiers(): [DogmaType, Modifier[]][] {
-        const highModifiers = this.high.map(x => {
-            return [x, x.getPreModifiers()] as [DogmaType, Modifier[]];
-        });
-        const midModifiers = this.high.map(x => {
-            return [x, x.getPreModifiers()] as [DogmaType, Modifier[]];
-        });
-        const lowModifiers = this.high.map(x => {
-            return [x, x.getPreModifiers()] as [DogmaType, Modifier[]];
-        });
+    getModifiers(getModifiersFunction: Function): [DogmaType, Modifier[]][] {
+
+        let func = x => getModifiersFunction(x) as [DogmaType, Modifier[]];
+
+        const highModifiers = this.high.map(func);
+        const midModifiers = this.high.map(func);
+        const lowModifiers = this.high.map(func);
+
         return [...highModifiers, ...midModifiers, ...lowModifiers];
+    }
+
+    getPreModifiers(): [DogmaType, Modifier[]][] {
+        return this.getModifiers(x => [x, x.getPreModifiers()] as [DogmaType, Modifier[]]);
     }
 
     getMidModifiers(): [DogmaType, Modifier[]][] {
-        const highModifiers = this.high.map(x => {
-            return [x, x.getMidModifiers()] as [DogmaType, Modifier[]];
-        });
-        const midModifiers = this.high.map(x => {
-            return [x, x.getMidModifiers()] as [DogmaType, Modifier[]];
-        });
-        const lowModifiers = this.high.map(x => {
-            return [x, x.getMidModifiers()] as [DogmaType, Modifier[]];
-        });
-        return [...highModifiers, ...midModifiers, ...lowModifiers];
+        return this.getModifiers(x => [x, x.getMidModifiers()] as [DogmaType, Modifier[]]);
     }
 
     getPostModifiers(): [DogmaType, Modifier[]][] {
-        const highModifiers = this.high.map(x => {
-            return [x, x.getPostModifiers()] as [DogmaType, Modifier[]];
-        });
-        const midModifiers = this.high.map(x => {
-            return [x, x.getPostModifiers()] as [DogmaType, Modifier[]];
-        });
-        const lowModifiers = this.high.map(x => {
-            return [x, x.getPostModifiers()] as [DogmaType, Modifier[]];
-        });
-        return [...highModifiers, ...midModifiers, ...lowModifiers];
+        return this.getModifiers(x => [x, x.getPostModifiers()] as [DogmaType, Modifier[]]);
     }
 }
