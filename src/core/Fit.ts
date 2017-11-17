@@ -19,7 +19,7 @@ export default class Fit {
     ship: Ship;
 
     // The character
-    //character: DogmaType; // TODO: Character
+    character: DogmaEnvironment; // TODO: Character
 
     // Modules on the ship
     modules: ModuleHandler;
@@ -58,17 +58,30 @@ export default class Fit {
         explosive: 0.25
     };
 
-    calculate(resitances: Resistances = this.defaultResistance): FitResult {
+    calculate(resitances: Resistances = this.defaultResistance) {
+
+        // Create a special envrionment for the character.
+        this.character = new DogmaEnvironment(0);
+
+        // Reset the environment for the ship and modules
+        this.ship.resetEnvironment();
+
+        this.modules.high.forEach(x => x.resetEnvironment());
+        this.modules.mid.forEach(x => x.resetEnvironment());
+        this.modules.low.forEach(x => x.resetEnvironment());
+
+        this.drones.forEach(x => x.resetEnvironment());
+        this.skills.forEach(x => x.resetEnvironment());
+        this.implants.forEach(x => x.resetEnvironment());
+        this.boosters.forEach(x => x.resetEnvironment());
+
+        this.rigs.forEach(x => x.resetEnvironment());
+
         // Calculate
-        let fitResult: FitResult;
 
         this.applyAllModifiers(this.getPreModifiers());
         this.applyAllModifiers(this.getMidModifiers());
         this.applyAllModifiers(this.getPostModifiers());
-
-        console.log(this.ship.environment);
-
-        return fitResult;
     }
 
     applyAllModifiers(modifierList: [DogmaType, Modifier[]][]) {
@@ -81,17 +94,20 @@ export default class Fit {
 
                 // Check what environment or environments this modifier modifies
                 if (modifier.environmentType === DogmaEnvironmentType.CHARACTER) {
-                    // Not yet implemented
-                } else if (modifier.environmentType === DogmaEnvironmentType.SHIP) {
-                    if (selfType.typeId === 41201) {
-                        console.log("appending to ship: ", selfType.typeId, modifier.operation);
-                        console.log(selfType);
-                        console.log(modifier.getFilter());
+
+                    // IF the modifier has a filter, apply it to things in the character environment
+                    if (modifier.getFilter()) {
+                        for (const module of [...this.drones].filter(x => modifier.getFilter().contains(x))) {
+                            modifier.applyModifier(selfType.environment, module.environment);
+                        }
+                    } else {
+                        // IF there is no filter on the modifier, apply it to the character itself
+                        modifier.applyModifier(selfType.environment, this.character);
                     }
+                } else if (modifier.environmentType === DogmaEnvironmentType.SHIP) {
                     // If there is a filter, then this modifiers applies to modules in the filter
                     if (modifier.getFilter()) {
-                        console.log('Has a filter', modifier.getFilter(), modifier);
-                        for (const module of [...this.modules.low, ...this.modules.mid, ...this.modules.high]) {
+                        for (const module of [...this.modules.low, ...this.modules.mid, ...this.modules.high].filter(x => modifier.getFilter().contains(x))) {
                             modifier.applyModifier(selfType.environment, module.environment);
                         }
                     } else {
@@ -101,7 +117,7 @@ export default class Fit {
                     }
                 } else if (modifier.environmentType === DogmaEnvironmentType.OTHER) {
                     if (selfType instanceof Charge) {
-
+                        modifier.applyModifier(selfType.environment, (selfType as Charge).container.environment);
                     }
                     if (selfType instanceof Module && selfType.charge) {
                         modifier.applyModifier(selfType.environment, selfType.charge.environment);
@@ -144,4 +160,48 @@ export default class Fit {
 
         return [shipModifiers, ...moduleModifiers, ...skillModifiers];
     }
+
+
+    getShieldResistance(): Resistances {
+        let em = this.ship.environment.getAttributeValueByName('shieldEmDamageResonance');
+        let thermal = this.ship.environment.getAttributeValueByName('shieldThermalDamageResonance');
+        let kinetic = this.ship.environment.getAttributeValueByName('shieldKineticDamageResonance');
+        let explosive = this.ship.environment.getAttributeValueByName('shieldExplosiveDamageResonance');
+
+        return {
+            em: em,
+            thermal: thermal,
+            kinetic: kinetic,
+            explosive: explosive
+        };
+    }
+
+    getArmorResistance(): Resistances {
+        let em = this.ship.environment.getAttributeValueByName('armorEmDamageResonance');
+        let thermal = this.ship.environment.getAttributeValueByName('armorThermalDamageResonance');
+        let kinetic = this.ship.environment.getAttributeValueByName('armorKineticDamageResonance');
+        let explosive = this.ship.environment.getAttributeValueByName('armorExplosiveDamageResonance');
+
+        return {
+            em: em,
+            thermal: thermal,
+            kinetic: kinetic,
+            explosive: explosive
+        };
+    }
+
+    getHullResistance(): Resistances {
+        let em = this.ship.environment.getAttributeValueByName('emDamageResonance');
+        let thermal = this.ship.environment.getAttributeValueByName('thermalDamageResonance');
+        let kinetic = this.ship.environment.getAttributeValueByName('kineticDamageResonance');
+        let explosive = this.ship.environment.getAttributeValueByName('explosiveDamageResonance');
+
+        return {
+            em: em,
+            thermal: thermal,
+            kinetic: kinetic,
+            explosive: explosive
+        };
+    }
+
 }

@@ -28,7 +28,7 @@ export default class DogmaType {
         this.calculateModifiers();
     }
 
-    protected resetEnvironment() {
+    public resetEnvironment() {
         this.environment = new DogmaEnvironment(this.typeId);
     }
 

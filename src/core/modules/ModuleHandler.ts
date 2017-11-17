@@ -23,7 +23,11 @@ export default class ModuleHandler {
         const midModifiers = this.mid.map(func);
         const lowModifiers = this.low.map(func);
 
-        return [...highModifiers, ...midModifiers, ...lowModifiers];
+        const highModifiersCharges = this.high.filter(x => x.charge).map(x => x.charge).map(func);
+        const midModifiersCharges = this.mid.filter(x => x.charge).map(x => x.charge).map(func);
+        const lowModifiersCharges = this.low.filter(x => x.charge).map(x => x.charge).map(func);
+
+        return [...highModifiers, ...midModifiers, ...lowModifiers, ...highModifiersCharges, ...midModifiersCharges, ...lowModifiersCharges];
     }
 
     getPreModifiers(): [DogmaType, Modifier[]][] {

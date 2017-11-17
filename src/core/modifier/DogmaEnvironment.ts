@@ -11,8 +11,10 @@ export default class DogmaEnvironment {
     private attributes: {[attribute: string]: number};
 
     constructor(typeId: number) {
-        this.typeId = typeId;
-        this.loadAttributes();
+        if (typeId > 0) {
+            this.typeId = typeId;
+            this.loadAttributes();
+        }
     }
 
     /// Load all effects of the type into the environment.

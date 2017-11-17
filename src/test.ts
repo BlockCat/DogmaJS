@@ -13,10 +13,12 @@ import Skill from './core/modules/skills/Skill';
 const fit = new Fit();
 fit.ship = new Ship(17740);
 
-fit.skills.push(new Skill(3336, 50));
-fit.skills.push(new Skill(3337, 50));
-fit.skills.push(new Skill(3413, 50));
-fit.skills.push(new Skill(12209, 50));
+CacheHandler.GetCacheHandler()
+
+fit.skills.push(new Skill(3336, 5));
+fit.skills.push(new Skill(3337, 5));
+fit.skills.push(new Skill(3413, 5));
+fit.skills.push(new Skill(12209, 5));
 
 // neutron blaster cannon II with Void L
 fit.modules.high.push(new Module(3186, ModuleLocation.HIGH, ModuleState.ACTIVE, new Charge(12791)));
@@ -77,20 +79,25 @@ const loadFit = function(fit: Fit) {
     document.getElementById('armor_hp').innerHTML = (fit.ship.environment.getAttributeValueByName('armorHP') + fit.ship.environment.getAttributeValueByName('armorHPBonusAdd')).toFixed(0) + '';
     document.getElementById('hull_hp').innerHTML = fit.ship.environment.getAttributeValueByName('hp') + '';
 
-    document.getElementById('shield_em').innerHTML = ((1 -fit.ship.environment.getAttributeValueByName('shieldEmDamageResonance')) * 100).toFixed(1) + '%';
-    document.getElementById('shield_kinetic').innerHTML = ((1 - fit.ship.environment.getAttributeValueByName('shieldKineticDamageResonance')) * 100).toFixed(1) + '%';
-    document.getElementById('shield_explosive').innerHTML = ((1 - fit.ship.environment.getAttributeValueByName('shieldExplosiveDamageResonance')) * 100).toFixed(1) + '%';
-    document.getElementById('shield_heat').innerHTML = ((1 -fit.ship.environment.getAttributeValueByName('shieldThermalDamageResonance')) * 100).toFixed(1) + '%';
+    let shieldResistances = fit.getShieldResistance();
+    let armorResistances = fit.getArmorResistance();
+    let hullResistance = fit.getHullResistance();
 
-    document.getElementById('armor_em').innerHTML = ((1 -fit.ship.environment.getAttributeValueByName('armorEmDamageResonance')) * 100).toFixed(1) + '%';
-    document.getElementById('armor_kinetic').innerHTML = ((1 - fit.ship.environment.getAttributeValueByName('armorKineticDamageResonance')) * 100).toFixed(1) + '%';
-    document.getElementById('armor_explosive').innerHTML = ((1 - fit.ship.environment.getAttributeValueByName('armorExplosiveDamageResonance')) * 100).toFixed(1) + '%';
-    document.getElementById('armor_heat').innerHTML = ((1 -fit.ship.environment.getAttributeValueByName('armorThermalDamageResonance')) * 100).toFixed(1) + '%';
 
-    document.getElementById('hull_em').innerHTML = ((1 -fit.ship.environment.getAttributeValueByName('emDamageResonance')) * 100).toFixed(1) + '%';
-    document.getElementById('hull_kinetic').innerHTML = ((1 - fit.ship.environment.getAttributeValueByName('kineticDamageResonance')) * 100).toFixed(1) + '%';
-    document.getElementById('hull_explosive').innerHTML = ((1 - fit.ship.environment.getAttributeValueByName('explosiveDamageResonance')) * 100).toFixed(1) + '%';
-    document.getElementById('hull_heat').innerHTML = ((1 -fit.ship.environment.getAttributeValueByName('thermalDamageResonance')) * 100).toFixed(1) + '%';
+    document.getElementById('shield_em').innerHTML = ((1 - shieldResistances.em) * 100).toFixed(1) + '%';
+    document.getElementById('shield_kinetic').innerHTML = ((1 - shieldResistances.kinetic) * 100).toFixed(1) + '%';
+    document.getElementById('shield_explosive').innerHTML = ((1 - shieldResistances.explosive) * 100).toFixed(1) + '%';
+    document.getElementById('shield_heat').innerHTML = ((1 -shieldResistances.thermal) * 100).toFixed(1) + '%';
+
+    document.getElementById('armor_em').innerHTML = ((1 - armorResistances.em) * 100).toFixed(1) + '%';
+    document.getElementById('armor_kinetic').innerHTML = ((1 - armorResistances.kinetic) * 100).toFixed(1) + '%';
+    document.getElementById('armor_explosive').innerHTML = ((1 - armorResistances.explosive) * 100).toFixed(1) + '%';
+    document.getElementById('armor_heat').innerHTML = ((1 -armorResistances.thermal) * 100).toFixed(1) + '%';
+
+    document.getElementById('hull_em').innerHTML = ((1 - hullResistance.em) * 100).toFixed(1) + '%';
+    document.getElementById('hull_kinetic').innerHTML = ((1 - hullResistance.kinetic) * 100).toFixed(1) + '%';
+    document.getElementById('hull_explosive').innerHTML = ((1 - hullResistance.explosive) * 100).toFixed(1) + '%';
+    document.getElementById('hull_heat').innerHTML = ((1 -hullResistance.thermal) * 100).toFixed(1) + '%';
 
     let highParent = document.getElementById('high_mod');
     for (const highModule of fit.modules.high) {

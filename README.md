@@ -14,11 +14,8 @@ Make sure all dependencies are install by running ```yarn install```, get data f
 
 # TODO:
 - Write tests
-- Add character environment
-- Add drones
 - Add overloading modules
-- Add charges
-- Fix Aeon expressions
+- Fix Aeon expressions (these are probably MODIFIER INFO)
 - Stacking penalties
 - T3 Destroyers
 - T3 Cruisers

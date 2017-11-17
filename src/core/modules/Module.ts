@@ -14,5 +14,6 @@ export default class Module extends DogmaType {
         this.moduleState = moduleState;
 
         this.charge = charge;
+        this.charge.container = this;
     }
 }
