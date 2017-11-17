@@ -13,6 +13,6 @@ export default class Module extends DogmaType {
         this.moduleLocation = moduleLocation;
         this.moduleState = moduleState;
 
-        this.charge = this.charge;
+        this.charge = charge;
     }
 }

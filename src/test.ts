@@ -9,41 +9,42 @@ import Booster from './core/modules/skills/Booster';
 import CacheHandler from './core/CacheHandler';
 import Skill from './core/modules/skills/Skill';
 
+// https://zkillboard.com/kill/66006406/
 const fit = new Fit();
 fit.ship = new Ship(17740);
 
-fit.skills.push(new Skill(3336, 5));
-fit.skills.push(new Skill(3337, 5));
-fit.skills.push(new Skill(3413, 5));
-fit.skills.push(new Skill(12209, 5));
+fit.skills.push(new Skill(3336, 50));
+fit.skills.push(new Skill(3337, 50));
+fit.skills.push(new Skill(3413, 50));
+fit.skills.push(new Skill(12209, 50));
 
-fit.modules.high.push(new Module(12356, ModuleLocation.HIGH, ModuleState.ACTIVE, new Charge(12803)));
-fit.modules.high.push(new Module(12356, ModuleLocation.HIGH, ModuleState.ACTIVE, new Charge(12803)));
-fit.modules.high.push(new Module(12356, ModuleLocation.HIGH, ModuleState.ACTIVE, new Charge(12803)));
-fit.modules.high.push(new Module(12356, ModuleLocation.HIGH, ModuleState.ACTIVE, new Charge(12803)));
+// neutron blaster cannon II with Void L
+fit.modules.high.push(new Module(3186, ModuleLocation.HIGH, ModuleState.ACTIVE, new Charge(12791)));
+fit.modules.high.push(new Module(3186, ModuleLocation.HIGH, ModuleState.ACTIVE, new Charge(12791)));
+fit.modules.high.push(new Module(3186, ModuleLocation.HIGH, ModuleState.ACTIVE, new Charge(12791)));
+fit.modules.high.push(new Module(3186, ModuleLocation.HIGH, ModuleState.ACTIVE, new Charge(12791)));
 
-fit.modules.high.push(new Module(12356, ModuleLocation.HIGH, ModuleState.ACTIVE, new Charge(12803)));
-fit.modules.high.push(new Module(12356, ModuleLocation.HIGH, ModuleState.ACTIVE, new Charge(12803)));
-fit.modules.high.push(new Module(12356, ModuleLocation.HIGH, ModuleState.ACTIVE, new Charge(12803)));
-fit.modules.high.push(new Module(12356, ModuleLocation.HIGH, ModuleState.ACTIVE, new Charge(12803)));
+fit.modules.high.push(new Module(3186, ModuleLocation.HIGH, ModuleState.ACTIVE, new Charge(12791)));
+fit.modules.high.push(new Module(3186, ModuleLocation.HIGH, ModuleState.ACTIVE, new Charge(12791)));
+fit.modules.high.push(new Module(3186, ModuleLocation.HIGH, ModuleState.ACTIVE, new Charge(12791)));
+fit.modules.high.push(new Module(3186, ModuleLocation.HIGH, ModuleState.ACTIVE, new Charge(12791)));
 
-fit.modules.mid.push(new Module(5945, ModuleLocation.MID, ModuleState.ACTIVE));
-fit.modules.mid.push(new Module(4833, ModuleLocation.MID, ModuleState.ACTIVE));
-fit.modules.mid.push(new Module(9622, ModuleLocation.MID, ModuleState.ACTIVE));
-fit.modules.mid.push(new Module(5443, ModuleLocation.MID, ModuleState.ACTIVE));
-fit.modules.mid.push(new Module(2281, ModuleLocation.MID, ModuleState.ACTIVE));
 
-fit.modules.low.push(new Module(2048, ModuleLocation.LOW, ModuleState.ACTIVE));
-fit.modules.low.push(new Module(519, ModuleLocation.LOW, ModuleState.ACTIVE));
-fit.modules.low.push(new Module(519, ModuleLocation.LOW, ModuleState.ACTIVE));
-fit.modules.low.push(new Module(22291, ModuleLocation.LOW, ModuleState.ACTIVE));
-fit.modules.low.push(new Module(22291, ModuleLocation.LOW, ModuleState.ACTIVE));
-fit.modules.low.push(new Module(4405, ModuleLocation.LOW, ModuleState.ACTIVE));
-fit.modules.low.push(new Module(4405, ModuleLocation.LOW, ModuleState.ACTIVE));
+fit.modules.mid.push(new Module(14258, ModuleLocation.MID, ModuleState.ACTIVE));
+fit.modules.mid.push(new Module(14174, ModuleLocation.MID, ModuleState.ACTIVE));
+fit.modules.mid.push(new Module(41220, ModuleLocation.MID, ModuleState.ACTIVE));
+fit.modules.mid.push(new Module(19335, ModuleLocation.MID, ModuleState.ACTIVE));
+fit.modules.mid.push(new Module(14268, ModuleLocation.MID, ModuleState.ACTIVE));
 
-fit.rigs.push(new Rig(26082));
-fit.rigs.push(new Rig(26082));
-fit.rigs.push(new Rig(26082));
+fit.modules.low.push(new Module(31900, ModuleLocation.LOW, ModuleState.ACTIVE));
+fit.modules.low.push(new Module(31900, ModuleLocation.LOW, ModuleState.ACTIVE));
+fit.modules.low.push(new Module(41201, ModuleLocation.LOW, ModuleState.ACTIVE));
+fit.modules.low.push(new Module(18851, ModuleLocation.LOW, ModuleState.ACTIVE));
+fit.modules.low.push(new Module(18851, ModuleLocation.LOW, ModuleState.ACTIVE));
+
+fit.rigs.push(new Rig(26302));
+fit.rigs.push(new Rig(26302));
+fit.rigs.push(new Rig(26006));
 
 fit.implants.push(new Implant(13231));
 fit.implants.push(new Implant(10228));
@@ -72,14 +73,50 @@ const printItem = function(typeId: number) {
 };
 
 const loadFit = function(fit: Fit) {
-    document.getElementById('shield_hp').innerHTML = fit.ship.environment.getAttributeValueByName('shieldCapacity')+ '';
-    document.getElementById('armor_hp').innerHTML = fit.ship.environment.getAttributeValueByName('armorHP') + '';
+    document.getElementById('shield_hp').innerHTML = fit.ship.environment.getAttributeValueByName('shieldCapacity').toFixed(0)+ '';
+    document.getElementById('armor_hp').innerHTML = (fit.ship.environment.getAttributeValueByName('armorHP') + fit.ship.environment.getAttributeValueByName('armorHPBonusAdd')).toFixed(0) + '';
     document.getElementById('hull_hp').innerHTML = fit.ship.environment.getAttributeValueByName('hp') + '';
 
-    document.getElementById('shield_em').innerHTML = ((1 -fit.ship.environment.getAttributeValueByName('shieldEmDamageResonance')) * 100) + '%';
-    document.getElementById('shield_kinetic').innerHTML = ((1 - fit.ship.environment.getAttributeValueByName('shieldKineticDamageResonance')) * 100) + '%';
-    document.getElementById('shield_explosive').innerHTML = ((1 - fit.ship.environment.getAttributeValueByName('shieldExplosiveDamageResonance')) * 100) + '%';
-    document.getElementById('shield_heat').innerHTML = ((1 -fit.ship.environment.getAttributeValueByName('shieldThermalDamageResonance')) * 100) + '%';
+    document.getElementById('shield_em').innerHTML = ((1 -fit.ship.environment.getAttributeValueByName('shieldEmDamageResonance')) * 100).toFixed(1) + '%';
+    document.getElementById('shield_kinetic').innerHTML = ((1 - fit.ship.environment.getAttributeValueByName('shieldKineticDamageResonance')) * 100).toFixed(1) + '%';
+    document.getElementById('shield_explosive').innerHTML = ((1 - fit.ship.environment.getAttributeValueByName('shieldExplosiveDamageResonance')) * 100).toFixed(1) + '%';
+    document.getElementById('shield_heat').innerHTML = ((1 -fit.ship.environment.getAttributeValueByName('shieldThermalDamageResonance')) * 100).toFixed(1) + '%';
+
+    document.getElementById('armor_em').innerHTML = ((1 -fit.ship.environment.getAttributeValueByName('armorEmDamageResonance')) * 100).toFixed(1) + '%';
+    document.getElementById('armor_kinetic').innerHTML = ((1 - fit.ship.environment.getAttributeValueByName('armorKineticDamageResonance')) * 100).toFixed(1) + '%';
+    document.getElementById('armor_explosive').innerHTML = ((1 - fit.ship.environment.getAttributeValueByName('armorExplosiveDamageResonance')) * 100).toFixed(1) + '%';
+    document.getElementById('armor_heat').innerHTML = ((1 -fit.ship.environment.getAttributeValueByName('armorThermalDamageResonance')) * 100).toFixed(1) + '%';
+
+    document.getElementById('hull_em').innerHTML = ((1 -fit.ship.environment.getAttributeValueByName('emDamageResonance')) * 100).toFixed(1) + '%';
+    document.getElementById('hull_kinetic').innerHTML = ((1 - fit.ship.environment.getAttributeValueByName('kineticDamageResonance')) * 100).toFixed(1) + '%';
+    document.getElementById('hull_explosive').innerHTML = ((1 - fit.ship.environment.getAttributeValueByName('explosiveDamageResonance')) * 100).toFixed(1) + '%';
+    document.getElementById('hull_heat').innerHTML = ((1 -fit.ship.environment.getAttributeValueByName('thermalDamageResonance')) * 100).toFixed(1) + '%';
+
+    let highParent = document.getElementById('high_mod');
+    for (const highModule of fit.modules.high) {
+        let typeh1 = '<p>' + highModule.typeId + '</p>'
+        let extra = '';
+        console.log(highModule);
+
+        extra += '<p>Range: ' + highModule.environment.getAttributeValueByName('maxRange') + '</p>';
+        extra += '<p>Falloff: ' + highModule.environment.getAttributeValueByName('falloff') + '</p>';
+        if (highModule.charge) {
+            let damageModifier = highModule.environment.getAttributeValueByName('damageMultiplier');
+            let emDamage = highModule.charge.environment.getAttributeValueByName('emDamage') * damageModifier;
+            let heatDamage = highModule.charge.environment.getAttributeValueByName('thermalDamage') * damageModifier;
+            let kineticDamage = highModule.charge.environment.getAttributeValueByName('kineticDamage') * damageModifier;
+            let explosiveDamage = highModule.charge.environment.getAttributeValueByName('explosiveDamage') * damageModifier;
+
+            extra += '<p>';
+            extra += 'damageModifier: ' + damageModifier.toFixed(1) + ';</br>';
+            extra += 'em damage: ' + (emDamage).toFixed(0) + ';</br> ';
+            extra += 'heat damage: ' + (heatDamage).toFixed(0) + ';</br> ';
+            extra += 'kinetic damage: ' + (kineticDamage ).toFixed(0)+ ';</br> ';
+            extra += 'explosive damage: ' + (explosiveDamage ).toFixed(0) + ';</br> ';
+            extra += '</p>';
+        }
+        highParent.insertAdjacentHTML('beforeend', '<div>' + typeh1 + extra + '</div>');
+    }
 };
 
 window['loadFit'] = loadFit;

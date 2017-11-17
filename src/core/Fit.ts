@@ -11,6 +11,8 @@ import {Resistances} from '../types/Resistances';
 import DogmaType from './modules/DogmaType';
 import Modifier from './modifier/Modifier';
 import {default as DogmaEnvironment, DogmaEnvironmentType} from './modifier/DogmaEnvironment';
+import Charge from './modules/Charge';
+import Module from './modules/Module';
 
 export default class Fit {
     // The ship selected for fitting
@@ -81,6 +83,11 @@ export default class Fit {
                 if (modifier.environmentType === DogmaEnvironmentType.CHARACTER) {
                     // Not yet implemented
                 } else if (modifier.environmentType === DogmaEnvironmentType.SHIP) {
+                    if (selfType.typeId === 41201) {
+                        console.log("appending to ship: ", selfType.typeId, modifier.operation);
+                        console.log(selfType);
+                        console.log(modifier.getFilter());
+                    }
                     // If there is a filter, then this modifiers applies to modules in the filter
                     if (modifier.getFilter()) {
                         console.log('Has a filter', modifier.getFilter(), modifier);
@@ -88,8 +95,16 @@ export default class Fit {
                             modifier.applyModifier(selfType.environment, module.environment);
                         }
                     } else {
+
                         // Apply this modifier to the ship itself.
                         modifier.applyModifier(selfType.environment, this.ship.environment);
+                    }
+                } else if (modifier.environmentType === DogmaEnvironmentType.OTHER) {
+                    if (selfType instanceof Charge) {
+
+                    }
+                    if (selfType instanceof Module && selfType.charge) {
+                        modifier.applyModifier(selfType.environment, selfType.charge.environment);
                     }
                 } else {
                     // only self environment

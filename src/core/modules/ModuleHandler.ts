@@ -20,8 +20,8 @@ export default class ModuleHandler {
         let func = x => getModifiersFunction(x) as [DogmaType, Modifier[]];
 
         const highModifiers = this.high.map(func);
-        const midModifiers = this.high.map(func);
-        const lowModifiers = this.high.map(func);
+        const midModifiers = this.mid.map(func);
+        const lowModifiers = this.low.map(func);
 
         return [...highModifiers, ...midModifiers, ...lowModifiers];
     }
